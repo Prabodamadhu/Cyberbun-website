@@ -2,15 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <title>Cyberbun | Premium Homemade Buns</title>
     <meta name="description" content="Fresh, soft, and preservative-free buns delivered daily by Praboda Madhushanka.">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-    <meta property="og:title" content="Cyberbun - Fresh Homemade Buns">
-    <meta property="og:description" content="Order fresh, homemade buns daily. No preservatives.">
-    <meta property="og:image" content="logo.jpg">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Orbitron:wght@600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -21,7 +17,7 @@
             --secondary: #ffe600;
             --glow: rgba(255, 145, 0, 0.5);
             --dark-bg: #050505;
-            --card-bg: rgba(20, 20, 20, 0.95);
+            --card-bg: rgba(20, 20, 20, 0.98);
             --text-light: #ffffff;
             --text-dim: #a0a0a0;
         }
@@ -32,15 +28,15 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--dark-bg);
             color: var(--text-light);
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+            line-height: 1.6;
         }
 
+        /* Responsive Nav */
         nav {
-            background: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 0.8rem 5%;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 12px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -51,173 +47,153 @@
         }
 
         .logo-container img {
-            height: 50px;
-            filter: drop-shadow(0 0 8px var(--glow));
+            height: 40px;
+            width: auto;
+            filter: drop-shadow(0 0 5px var(--glow));
         }
 
+        /* Hero Optimized for Mobile Backgrounds */
         .hero {
-            height: 100vh;
+            min-height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 20px;
             position: relative;
-            background-image: url('image_5.png');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('image_5.png');
             background-size: cover;
-            background-position: center center;
+            background-position: center;
             background-attachment: fixed;
-            z-index: 1;
         }
 
-        .hero::after {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                radial-gradient(circle at center, rgba(5,5,5,0.3) 0%, rgba(5,5,5,1) 100%),
-                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
-                linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-            background-size: cover, 100% 3px, 3px 100%;
-            pointer-events: none;
-            z-index: -2;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0.7) 70%, rgba(5,5,5,1) 100%);
-            z-index: -1;
+        @media (max-width: 768px) {
+            .hero { background-attachment: scroll; } /* Better performance on mobile */
         }
 
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(3rem, 15vw, 7rem);
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 35px var(--glow);
-            margin-bottom: 5px;
+            font-size: clamp(2.5rem, 12vw, 6rem);
+            color: var(--primary);
+            text-shadow: 0 0 20px var(--glow);
+            margin-bottom: 10px;
         }
 
         .hero p {
-            font-size: 1.4rem;
-            color: rgba(255,255,255,0.85);
-            letter-spacing: 4px;
+            font-size: clamp(0.9rem, 4vw, 1.3rem);
+            letter-spacing: 2px;
+            color: var(--text-light);
             text-transform: uppercase;
         }
 
+        /* Mobile-Friendly Buttons */
         .btn-neon {
-            margin-top: 45px;
-            padding: 18px 45px;
+            margin-top: 30px;
+            padding: 16px 32px;
             border: 2px solid var(--primary);
             color: var(--primary);
             text-decoration: none;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
             display: inline-block;
-            transition: 0.4s;
-            background: transparent;
-            border-radius: 5px;
-            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-size: 0.9rem;
         }
 
-        .btn-neon:hover {
-            background: var(--primary);
-            color: #000;
-            box-shadow: 0 0 25px var(--primary);
-            transform: translateY(-4px);
-        }
+        .btn-neon:active { transform: scale(0.95); }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 120px 20px; }
+        /* Menu Grid */
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 60px 15px; 
+        }
 
         .section-title {
             text-align: center;
             font-family: 'Orbitron', sans-serif;
-            margin-bottom: 70px;
-            font-size: 2.8rem;
+            margin-bottom: 40px;
+            font-size: clamp(1.8rem, 8vw, 2.5rem);
             color: var(--secondary);
         }
 
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .card {
             background: var(--card-bg);
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: 0.6s;
-        }
-
-        .card:hover {
-            border-color: var(--primary);
-            transform: scale(1.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .card img {
             width: 100%;
-            height: 320px;
+            height: 250px;
             object-fit: cover;
         }
 
-        .card-content { padding: 35px; text-align: center; }
+        .card-content { padding: 25px; text-align: center; }
 
         .price {
             display: block;
             color: var(--secondary);
-            font-size: 1.9rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin: 20px 0;
+            margin: 15px 0;
         }
 
-        /* Info Panel Updates */
+        /* Info Panel - Stacked on Mobile */
         .info-panel {
             background: #0f0f0f;
-            padding: 60px 20px;
-            border-radius: 30px;
-            margin-top: 70px;
+            padding: 40px 20px;
+            border-radius: 20px;
+            margin-top: 50px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
             text-align: center;
-            border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .info-panel h4 { color: var(--primary); margin-bottom: 15px; font-family: 'Orbitron'; }
-        .contact-link { color: var(--secondary); text-decoration: none; font-weight: bold; }
+        .info-panel h4 { color: var(--primary); margin-bottom: 8px; font-family: 'Orbitron'; }
 
+        /* Fixed Mobile Bottom Bar */
         .mobile-nav {
-            display: none;
+            display: flex;
             position: fixed;
             bottom: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.98);
-            border-top: 2px solid var(--primary);
-            padding: 18px 0;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--primary);
+            padding: 15px 0;
             z-index: 2000;
+            justify-content: space-around;
         }
 
-        @media (max-width: 768px) {
-            .mobile-nav { display: flex; justify-content: space-around; }
-            .hero h1 { font-size: 4rem; }
-            .hero { background-attachment: scroll; }
-            body { padding-bottom: 80px; }
+        .mobile-nav a { 
+            color: white; 
+            text-decoration: none; 
+            font-weight: 700; 
+            font-size: 0.8rem;
+            text-transform: uppercase;
         }
-
-        .mobile-nav a { color: white; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
 
         footer {
-            padding: 80px 20px;
+            padding: 60px 20px 120px; /* Extra bottom padding for mobile bar */
             text-align: center;
-            border-top: 1px solid #1a1a1a;
             color: var(--text-dim);
-            line-height: 2;
+            font-size: 0.8rem;
+        }
+
+        @media (min-width: 769px) {
+            .mobile-nav { display: none; }
+            footer { padding-bottom: 60px; }
         }
     </style>
 </head>
@@ -227,21 +203,17 @@
     <div class="logo-container">
         <img src="logo.jpg" alt="Cyberbun Logo">
     </div>
-    <div>
-        <a href="#menu" style="color: var(--primary); text-decoration: none; font-weight: 700; font-family: 'Orbitron';">THE MENU</a>
-    </div>
+    <div style="font-family: 'Orbitron'; font-size: 0.8rem; color: var(--primary);">EST. 2026</div>
 </nav>
 
 <section class="hero">
     <h1 data-aos="zoom-in">CYBERBUN</h1>
-    <p data-aos="fade-up" data-aos-delay="400">Fresh. Homemade. Future-Proof.</p>
-    <div data-aos="fade-up" data-aos-delay="700">
-        <a href="#menu" class="btn-neon">View Menu</a>
-    </div>
+    <p data-aos="fade-up" data-aos-delay="200">Fresh. Homemade. Future-Proof.</p>
+    <a href="#menu" class="btn-neon" data-aos="fade-up" data-aos-delay="400">View Menu</a>
 </section>
 
 <div class="container" id="menu">
-    <h2 class="section-title" data-aos="fade-right">THE SELECTION</h2>
+    <h2 class="section-title">THE SELECTION</h2>
     <div class="menu-grid">
         
         <div class="card" data-aos="fade-up">
@@ -249,60 +221,56 @@
             <div class="card-content">
                 <h3>CHICKEN BUN</h3>
                 <span class="price">Rs. 500</span>
-                <a href="https://wa.me/94772636665?text=Hi Praboda, I'd like to order a Chicken Bun" class="btn-neon" style="font-size: 0.75rem; padding: 14px 28px;">Order on WhatsApp</a>
+                <a href="https://wa.me/94772636665?text=Hi Praboda, I'd like to order a Chicken Bun" class="btn-neon">Order Now</a>
             </div>
         </div>
 
-        <div class="card" data-aos="fade-up" data-aos-delay="150">
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
             <img src="hotdog.jpg" alt="Hotdog Bun">
             <div class="card-content">
                 <h3>HOTDOG BUN</h3>
                 <span class="price">Rs. 400</span>
-                <a href="https://wa.me/94772636665?text=Hi Praboda, I'd like to order a Hotdog Bun" class="btn-neon" style="font-size: 0.75rem; padding: 14px 28px;">Order on WhatsApp</a>
+                <a href="https://wa.me/94772636665?text=Hi Praboda, I'd like to order a Hotdog Bun" class="btn-neon">Order Now</a>
             </div>
         </div>
 
-        <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
             <img src="pork.jpg" alt="Pork Bun">
             <div class="card-content">
                 <h3>PORK BUN</h3>
                 <span class="price">Rs. 600</span>
-                <a href="https://wa.me/94772636665?text=Hi Praboda, I'd like to order a Pork Bun" class="btn-neon" style="font-size: 0.75rem; padding: 14px 28px;">Order on WhatsApp</a>
+                <a href="https://wa.me/94772636665?text=Hi Praboda, I'd like to order a Pork Bun" class="btn-neon">Order Now</a>
             </div>
         </div>
 
     </div>
 
-    <div class="info-panel" data-aos="fade-up">
+    <div class="info-panel">
         <div class="info-item">
             <h4>FOUNDER</h4>
             <p>Praboda Madhushanka</p>
         </div>
         <div class="info-item">
-            <h4>DIRECT CONTACT</h4>
-            <p><a href="tel:0772636665" class="contact-link">077 263 6665</a></p>
-        </div>
-        <div class="info-item">
-            <h4>DAILY BAKED</h4>
-            <p>Handmade fresh every morning in Colombo.</p>
+            <h4>CONTACT</h4>
+            <p><a href="tel:0772636665" style="color: var(--secondary); text-decoration: none;">077 263 6665</a></p>
         </div>
     </div>
 </div>
 
 <footer>
-    <p>&copy; 2026 CYBERBUN BREADWORKS.</p>
-    <p>Handcrafted by <strong>Praboda Madhushanka</strong></p>
-    <p>Contact: <a href="tel:0772636665" style="color: var(--primary); text-decoration: none;">077 263 6665</a></p>
+    <p>&copy; 2026 CYBERBUN BREADWORKS</p>
+    <p>Handcrafted by Praboda Madhushanka</p>
 </footer>
 
 <div class="mobile-nav">
     <a href="#menu">📂 MENU</a>
-    <a href="https://wa.me/94772636665" style="color: var(--primary);">💬 WHATSAPP PRABODA</a>
+    <a href="https://wa.me/94772636665" style="color: var(--primary);">💬 WHATSAPP</a>
+    <a href="tel:0772636665">📞 CALL</a>
 </div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init({ duration: 1000, once: true });
+    AOS.init({ duration: 800, once: true });
 </script>
 
 </body>
