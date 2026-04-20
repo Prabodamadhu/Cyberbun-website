@@ -1,116 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cyberbun - Fresh Homemade Buns</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-body {margin:0;font-family:'Poppins',sans-serif;background:#fff;color:#333}
-header {background:#111;color:#fff;padding:15px;text-align:center;font-size:22px;font-weight:600}
-.hero {padding:60px 20px;text-align:center;background:#f8f8f8}
-.hero h1 {font-size:38px;margin-bottom:10px}
-.hero p {font-size:18px;margin-bottom:20px}
-.btn {display:inline-block;padding:12px 20px;margin:5px;border-radius:5px;text-decoration:none;font-weight:600}
-.btn-primary {background:#25D366;color:#fff}
-.btn-secondary {background:#ff9800;color:#fff}
-.section {padding:50px 20px;text-align:center}
-.features {display:flex;flex-wrap:wrap;justify-content:center;gap:20px}
-.feature {width:200px;background:#fafafa;padding:15px;border-radius:10px}
-.menu {display:flex;flex-wrap:wrap;justify-content:center;gap:25px}
-.card {border-radius:15px;overflow:hidden;width:280px;box-shadow:0 4px 15px rgba(0,0,0,0.1);transition:0.3s}
-.card:hover {transform:translateY(-5px)}
-.card img {width:100%;height:200px;object-fit:cover}
-.card-content {padding:15px}
-.card h3 {margin:10px 0}
-.price {font-weight:600;color:#ff5722}
-.whatsapp-float {position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;padding:15px;border-radius:50%;font-size:20px;text-decoration:none}
-footer {background:#111;color:#fff;padding:20px;text-align:center;margin-top:40px}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberbun | Fresh Homemade Buns</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Orbitron:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #ff9100 0%, #ffe600 100%);
+            --dark-bg: #0a0a0a;
+            --card-bg: #161616;
+            --text-light: #ffffff;
+            --text-dim: #b3b3b3;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo-container img {
+            height: 50px;
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-bottom: 30px;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 145, 0, 0.4);
+        }
+
+        /* Menu Grid */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: #ff9100;
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .price {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 15px 0;
+            color: #ffe600;
+        }
+
+        /* Info Sections */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            background: #111;
+            padding: 40px;
+            margin-top: 50px;
+            border-radius: 20px;
+        }
+
+        .info-item h4 { color: #ff9100; margin-bottom: 10px; }
+
+        /* Floating WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            border-top: 1px solid #222;
+        }
+    </style>
 </head>
 <body>
 
-<header>
-Cyberbun 🍔
-</header>
+<nav>
+    <div class="logo-container">
+        <img src="logo.jpg" alt="Cyberbun Logo">
+    </div>
+    <a href="#menu" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">Menu</a>
+</nav>
 
 <section class="hero">
-<h1>Fresh Homemade Buns</h1>
-<p>Soft, Delicious & Made Daily</p>
-<a href="https://wa.me/947XXXXXXXX" class="btn btn-primary">Order on WhatsApp</a>
-<a href="#menu" class="btn btn-secondary">View Menu</a>
+    <h1>CYBERBUN</h1>
+    <p>Premium Homemade Buns. No Preservatives. Pure Taste.</p>
+    <div>
+        <a href="#menu" class="btn btn-primary">Explore Menu</a>
+    </div>
 </section>
 
-<section class="section">
-<h2>Why Choose Us</h2>
-<div class="features">
-<div class="feature">✔ Homemade & Fresh</div>
-<div class="feature">✔ No Preservatives</div>
-<div class="feature">✔ Premium Quality</div>
-<div class="feature">✔ Custom Orders</div>
-</div>
-</section>
+<div class="container" id="menu">
+    <h2 class="section-title">TODAY'S SPECIALS</h2>
+    <div class="menu-container">
+        
+        <div class="card">
+            <img src="chicken.jpg" alt="Chicken Bun">
+            <div class="card-body">
+                <h3>Chicken Bun</h3>
+                <span class="price">Rs. 500</span>
+                <a href="https://wa.me/947XXXXXXXX" class="btn btn-primary">Order via WhatsApp</a>
+            </div>
+        </div>
 
-<section class="section" id="menu">
-<h2>🔥 Our Special Buns</h2>
-<div class="menu">
+        <div class="card">
+            <img src="hotdog.jpg" alt="Hotdog Bun">
+            <div class="card-body">
+                <h3>Hotdog Bun</h3>
+                <span class="price">Rs. 400</span>
+                <a href="https://wa.me/947XXXXXXXX" class="btn btn-primary">Order via WhatsApp</a>
+            </div>
+        </div>
 
-<div class="card">
-<img src="chicken.jpg" alt="Chicken Bun">
-<div class="card-content">
-<h3>Chicken Bun</h3>
-<p class="price">Rs. 500</p>
-<a href="https://wa.me/947XXXXXXXX" class="btn btn-primary">Order Now</a>
-</div>
-</div>
+        <div class="card">
+            <img src="pork.jpg" alt="Pork Bun">
+            <div class="card-body">
+                <h3>Pork Bun</h3>
+                <span class="price">Rs. 600</span>
+                <a href="https://wa.me/947XXXXXXXX" class="btn btn-primary">Order via WhatsApp</a>
+            </div>
+        </div>
 
-<div class="card">
-<img src="hotdog.jpg" alt="Hotdog Bun">
-<div class="card-content">
-<h3>Hotdog Bun</h3>
-<p class="price">Rs. 400</p>
-<a href="https://wa.me/947XXXXXXXX" class="btn btn-primary">Order Now</a>
-</div>
-</div>
-
-<div class="card">
-<img src="pork.jpg" alt="Pork Bun">
-<div class="card-content">
-<h3>Pork Bun</h3>
-<p class="price">Rs. 600</p>
-<a href="https://wa.me/947XXXXXXXX" class="btn btn-primary">Order Now</a>
-</div>
+    </div>
 </div>
 
-</div>
-</section>
-
-<section class="section">
-<h2>How to Order</h2>
-<p>1. Choose your bun<br>2. Click WhatsApp<br>3. Send your order<br>4. Get delivery or pickup</p>
-</section>
-
-<section class="section">
-<h2>About Cyberbun</h2>
-<p>We make fresh homemade buns daily with love and care. Quality you can trust!</p>
-</section>
-
-<section class="section">
-<h2>Customer Reviews</h2>
-<p>"Super soft buns! Highly recommended 🔥"</p>
-<p>"Perfect for burgers 😍"</p>
-</section>
-
-<section class="section">
-<h2>Delivery Info</h2>
-<p>Available in Colombo & nearby areas.<br>Pickup & Delivery available.</p>
+<section style="max-width: 1200px; margin: 0 auto; padding: 40px 20px;">
+    <div class="info-grid">
+        <div class="info-item">
+            <h4>Delivery</h4>
+            <p>Colombo & Suburbs. Fast & Fresh.</p>
+        </div>
+        <div class="info-item">
+            <h4>Quality</h4>
+            <p>100% Homemade, zero preservatives.</p>
+        </div>
+        <div class="info-item">
+            <h4>Events</h4>
+            <p>We accept bulk orders for parties!</p>
+        </div>
+    </div>
 </section>
 
 <footer>
-<p>Cyberbun © 2026</p>
+    <p>&copy; 2026 CYBERBUN. All Rights Reserved.</p>
 </footer>
 
-<a href="https://wa.me/947XXXXXXXX" class="whatsapp-float">💬</a>
+<a href="https://wa.me/947XXXXXXXX" class="whatsapp-float">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WhatsApp">
+</a>
 
 </body>
 </html>
