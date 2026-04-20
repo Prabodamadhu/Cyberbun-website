@@ -6,9 +6,12 @@
     
     <title>Cyberbun | Premium Homemade Buns</title>
     <meta name="description" content="Fresh, soft, and preservative-free buns delivered daily. Experience the future of flavor.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
     <meta property="og:title" content="Cyberbun - Fresh Homemade Buns">
+    <meta property="og:description" content="Order fresh, homemade buns daily. No preservatives.">
     <meta property="og:image" content="logo.jpg">
-    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-username.github.io/your-repo-name/">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Orbitron:wght@600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -19,7 +22,7 @@
             --secondary: #ffe600;
             --glow: rgba(255, 145, 0, 0.5);
             --dark-bg: #050505;
-            --card-bg: rgba(25, 25, 25, 0.8);
+            --card-bg: rgba(20, 20, 20, 0.95);
             --text-light: #ffffff;
             --text-dim: #a0a0a0;
         }
@@ -34,12 +37,12 @@
             scroll-behavior: smooth;
         }
 
-        /* Glassmorphism Navigation */
+        /* Glassmorphism Navigation (Unchanged) */
         nav {
-            background: rgba(10, 10, 10, 0.8);
+            background: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            padding: 1rem 5%;
+            padding: 0.8rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -50,147 +53,211 @@
         }
 
         .logo-container img {
-            height: 45px;
-            filter: drop-shadow(0 0 5px var(--glow));
+            height: 50px;
+            filter: drop-shadow(0 0 8px var(--glow));
         }
 
-        /* Hero Section with Scanline Effect */
+        /* --- UPDATED: HERO SECTION --- */
         .hero {
-            height: 90vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             position: relative;
-            background: radial-gradient(circle at center, #111 0%, #000 100%);
+            
+            /* Apply the NEW composite triad banner as a background */
+            background-image: url('image_5.png');
+            background-size: cover;
+            background-position: center center;
+            
+            /* ADD PARALLAX EFFECT: Causes the image to scroll slower than the text */
+            background-attachment: fixed;
+            
+            z-index: 1;
         }
 
-        .hero::before {
-            content: " ";
+        /* ADD THE DARK OVERLAY & VIGNETTE (Kept, but on top of the image) */
+        .hero::after {
+            content: "";
             position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 4px, 3px 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, rgba(5,5,5,0.4) 0%, rgba(5,5,5,1) 100%);
+            
+            /* Combine vignette with original scanline effect */
+            background-image: 
+                radial-gradient(circle at center, rgba(5,5,5,0.3) 0%, rgba(5,5,5,1) 100%),
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: cover, 100% 3px, 3px 100%;
+            
             pointer-events: none;
+            z-index: -2;
         }
+
+        /* ADD A FADE-OUT AT THE BOTTOM (Kept, for image depth) */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(5,5,5,0.7) 70%, rgba(5,5,5,1) 100%);
+            z-index: -1;
+        }
+
+        /* --- REST OF THE CODE REMAINS UNCHANGED --- */
 
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(3rem, 10vw, 5rem);
+            font-size: clamp(3rem, 15vw, 7rem);
             background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px var(--glow);
-            margin-bottom: 15px;
+            text-shadow: 0 0 35px var(--glow), 0 0 10px rgba(255,255,255,0.3);
+            margin-bottom: 5px;
+            letter-spacing: -2px;
         }
 
-        /* Neon Glow Button */
+        .hero p {
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.85);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(0,0,0,0.8);
+        }
+
         .btn-neon {
-            padding: 15px 35px;
+            margin-top: 45px;
+            padding: 18px 45px;
             border: 2px solid var(--primary);
             color: var(--primary);
             text-decoration: none;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            position: relative;
+            display: inline-block;
             transition: 0.4s;
-            overflow: hidden;
             background: transparent;
-            border-radius: 4px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0,0,0,0.4);
         }
 
         .btn-neon:hover {
             background: var(--primary);
             color: #000;
-            box-shadow: 0 0 30px var(--primary), 0 0 60px var(--primary);
+            box-shadow: 0 0 25px var(--primary), 0 0 60px var(--primary);
+            transform: translateY(-4px);
         }
 
-        /* Menu Grid */
-        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 120px 20px; }
 
         .section-title {
             text-align: center;
             font-family: 'Orbitron', sans-serif;
-            margin-bottom: 50px;
-            font-size: 2.2rem;
+            margin-bottom: 70px;
+            font-size: 2.8rem;
+            letter-spacing: 3px;
             color: var(--secondary);
+            text-shadow: 0 0 15px rgba(255,230,0,0.2);
         }
 
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 50px;
         }
 
         .card {
             background: var(--card-bg);
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.4s;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: center;
         }
 
         .card:hover {
             border-color: var(--primary);
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.9);
         }
 
         .card img {
             width: 100%;
-            height: 280px;
+            height: 320px;
             object-fit: cover;
-            opacity: 0.9;
-            transition: 0.4s;
+            filter: grayscale(15%);
+            transition: 0.6s;
         }
 
-        .card:hover img { opacity: 1; }
+        .card:hover img { filter: grayscale(0%); }
 
-        .card-content { padding: 25px; text-align: center; }
+        .card-content { padding: 35px; text-align: center; }
 
         .price {
             display: block;
             color: var(--secondary);
-            font-size: 1.6rem;
+            font-size: 1.9rem;
             font-weight: 700;
-            margin: 15px 0;
+            margin: 20px 0;
+            text-shadow: 0 0 10px rgba(255, 230, 0, 0.3);
         }
 
-        /* Mobile Bottom Nav */
         .mobile-nav {
             display: none;
             position: fixed;
             bottom: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            border-top: 1px solid var(--primary);
-            padding: 10px 0;
+            background: rgba(0, 0, 0, 0.98);
+            border-top: 2px solid var(--primary);
+            padding: 18px 0;
             z-index: 2000;
+            backdrop-filter: blur(10px);
         }
 
         @media (max-width: 768px) {
             .mobile-nav { display: flex; justify-content: space-around; }
-            .hero { height: 70vh; }
+            .hero h1 { font-size: 4rem; letter-spacing: -1px; }
+            .hero p { font-size: 1.1rem; letter-spacing: 2px; }
+            .container { padding: 80px 20px; }
+            body { padding-bottom: 80px; }
+            
+            /* Disable Parallax on mobile for performance */
+            .hero { background-attachment: scroll; }
         }
 
         .mobile-nav a {
             color: white;
             text-decoration: none;
-            font-size: 0.8rem;
-            text-align: center;
+            font-size: 0.95rem;
             font-weight: 700;
+            text-transform: uppercase;
         }
 
-        footer {
+        .info-panel {
+            background: #0f0f0f;
             padding: 60px 20px;
+            border-radius: 30px;
+            margin-top: 70px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .info-panel h4 { color: var(--primary); margin-bottom: 15px; font-family: 'Orbitron'; font-size: 1.1rem; letter-spacing: 1px;}
+        .info-panel p { color: var(--text-dim); }
+
+        footer {
+            padding: 100px 20px;
             text-align: center;
             border-top: 1px solid #1a1a1a;
             color: var(--text-dim);
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
         }
-
     </style>
 </head>
 <body>
@@ -199,16 +266,16 @@
     <div class="logo-container">
         <img src="logo.jpg" alt="Cyberbun Logo">
     </div>
-    <div class="nav-links">
-        <a href="#menu" style="color: white; text-decoration: none; font-weight: 600;">MENU</a>
+    <div>
+        <a href="#menu" style="color: var(--primary); text-decoration: none; font-weight: 700; font-family: 'Orbitron'; font-size: 0.95rem; letter-spacing: 1px;">THE PROTOCOL</a>
     </div>
 </nav>
 
 <section class="hero">
-    <h1 data-aos="zoom-in">CYBERBUN</h1>
-    <p data-aos="fade-up" data-aos-delay="200">The Future of Homemade Goodness.</p>
-    <div data-aos="fade-up" data-aos-delay="400" style="margin-top: 30px;">
-        <a href="#menu" class="btn-neon">View Menu</a>
+    <h1 data-aos="zoom-in" data-aos-duration="1200">CYBERBUN</h1>
+    <p data-aos="fade-up" data-aos-delay="400">Fresh. Homemade. Future-Proof.</p>
+    <div data-aos="fade-up" data-aos-delay="700">
+        <a href="#menu" class="btn-neon">Initiate Menu</a>
     </div>
 </section>
 
@@ -219,54 +286,63 @@
         <div class="card" data-aos="fade-up">
             <img src="chicken.jpg" alt="Chicken Bun">
             <div class="card-content">
-                <h3>Chicken Bun</h3>
+                <h3>CHICKEN BUN</h3>
                 <span class="price">Rs. 500</span>
-                <a href="https://wa.me/947XXXXXXXX" class="btn-neon" style="font-size: 0.8rem; padding: 10px 20px;">Order Now</a>
+                <a href="https://wa.me/94772636665?text=I'd like to order a Chicken Bun" class="btn-neon" style="font-size: 0.75rem; padding: 14px 28px;">Initiate WhatsApp Order</a>
             </div>
         </div>
 
-        <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card" data-aos="fade-up" data-aos-delay="150">
             <img src="hotdog.jpg" alt="Hotdog Bun">
             <div class="card-content">
-                <h3>Hotdog Bun</h3>
+                <h3>HOTDOG BUN</h3>
                 <span class="price">Rs. 400</span>
-                <a href="https://wa.me/947XXXXXXXX" class="btn-neon" style="font-size: 0.8rem; padding: 10px 20px;">Order Now</a>
+                <a href="https://wa.me/94772636665?text=I'd like to order a Hotdog Bun" class="btn-neon" style="font-size: 0.75rem; padding: 14px 28px;">Initiate WhatsApp Order</a>
             </div>
         </div>
 
-        <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <div class="card" data-aos="fade-up" data-aos-delay="300">
             <img src="pork.jpg" alt="Pork Bun">
             <div class="card-content">
-                <h3>Pork Bun</h3>
+                <h3>PORK BUN</h3>
                 <span class="price">Rs. 600</span>
-                <a href="https://wa.me/947XXXXXXXX" class="btn-neon" style="font-size: 0.8rem; padding: 10px 20px;">Order Now</a>
+                <a href="https://wa.me/94772636665?text=I'd like to order a Pork Bun" class="btn-neon" style="font-size: 0.75rem; padding: 14px 28px;">Initiate WhatsApp Order</a>
             </div>
         </div>
 
     </div>
+
+    <div class="info-panel" data-aos="fade-up">
+        <div class="info-item">
+            <h4>DIRECT DELIVERY</h4>
+            <p>Available in Colombo & suburbs. Delivered hot.</p>
+        </div>
+        <div class="info-item">
+            <h4>DAILY BAKED</h4>
+            <p>Every bun is handmade every single morning.</p>
+        </div>
+        <div class="info-item">
+            <h4>BULK ORDERS</h4>
+            <p>Perfect for gaming nights, parties, and events.</p>
+        </div>
+    </div>
 </div>
 
-<section class="container" style="text-align: center; border-top: 1px solid #1a1a1a;">
-    <h2 class="section-title">WHY CYBERBUN?</h2>
-    <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto 40px;">
-        We blend traditional homemade recipes with a modern touch. Every bun is baked fresh upon order with zero preservatives.
-    </p>
-</section>
-
 <footer>
-    <p>&copy; 2026 CYBERBUN | Built for the digital age.</p>
+    <p>&copy; 2026 CYBERBUN BREADWORKS. ALL SYSTEMS GO.</p>
 </footer>
 
 <div class="mobile-nav">
-    <a href="#menu">📂 MENU</a>
-    <a href="https://wa.me/947XXXXXXXX">💬 WHATSAPP</a>
+    <a href="#menu">📂 ACCESS MENU</a>
+    <a href="https://wa.me/94772636665" style="color: var(--primary);">💬 INSTANT ORDER</a>
 </div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init({
-        duration: 800,
-        once: true
+        duration: 1000,
+        once: true,
+        offset: 120
     });
 </script>
 
